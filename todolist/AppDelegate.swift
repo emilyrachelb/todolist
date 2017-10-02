@@ -8,18 +8,133 @@
 
 import UIKit
 import CoreData
+import Firebase
+import GoogleSignIn
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 
   var window: UIWindow?
-
+  
+  // app specific variables
+  var applicationUserId: String!
+  var authProvider: String!
+  var connectionAvailable: Bool!
+  var usersPhoto: UIImageView!
+  
+  // google signin user variables
+  var googleUsersId = String()
+  var googleUsersName = String()
+  var googleUsersEmail = String()
+  var googleUsersGender = String()
+  var googleUsersPhoto: URL!
+  var googleUsersPhotoAsString = String()
+  
+  // create firebase database reference
+  var databaseRef: DatabaseReference!
+  
+  // internet connectivity
+  var internetConnected: Bool!
+ 
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     // Override point for customization after application launch.
+    
+    // initialize firebase application
+    FirebaseApp.configure()
+    
+    // google login instance setup
+    GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
+    GIDSignIn.sharedInstance().delegate = self
+    
     return true
   }
-
+  
+  func checkInternet() {
+    guard let status = Network.reachability?.status else { return }
+    switch status {
+    case .unreachable:
+      print ("Internet unreachable")
+      return connectionAvailable = false
+    case .wifi:
+      print ("Internet reachable")
+      return connectionAvailable = true
+    case .wwan:
+      print ("Internet reachable")
+      return connectionAvailable = true
+    }
+  }
+  
+  func sign(_ signIn: GIDSignIn, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
+    if error != nil {
+      return
+    }
+    
+    guard let authentication = user.authentication else { return }
+    let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
+    
+    // save app userID
+    let currentUser = Auth.auth().currentUser
+    if let currentUser = currentUser {
+      self.applicationUserId = currentUser.uid
+    }
+    print(applicationUserId)
+    authProvider = "google"
+    
+    // retrieve details from the google user's profile
+    googleUsersId = user.userID
+    googleUsersName = user.profile.name
+    googleUsersEmail = user.profile.email
+    googleUsersPhoto = user.profile.imageURL(withDimension: 100 * UInt(UIScreen.main.scale))!
+    googleUsersPhotoAsString = googleUsersPhoto.absoluteString
+    
+    self.databaseRef = Database.database().reference()
+    self.databaseRef.child("user_profiles").child(self.applicationUserId).child(self.authProvider).observeSingleEvent(of: .value, with: { (snapshot) in
+      let snapshot = snapshot.value as? NSDictionary
+      
+      if (snapshot == nil) {
+        self.databaseRef.child("user_profiles").child(self.applicationUserId).child(self.authProvider).child("id").setValue(self.googleUsersId)
+        self.databaseRef.child("user_profiles").child(self.applicationUserId).child(self.authProvider).child("name").setValue(self.googleUsersName)
+        self.databaseRef.child("user_profiles").child(self.applicationUserId).child(self.authProvider).child("email").setValue(self.googleUsersEmail)
+        self.databaseRef.child("user_profiles").child(self.applicationUserId).child(self.authProvider).child("image_url").setValue(self.googleUsersPhotoAsString)
+      }
+    })
+    Auth.auth().signIn(with: credential) { (user, error) in
+      if error != nil {
+        return
+      }
+    }
+    return
+  }
+  // get image from source asynchronously
+  func getImageFromUrl(url: URL, completion: @escaping (_ data: Data?, _ response: URLResponse?, _ error: Error?) -> Void) {
+    URLSession.shared.dataTask(with: url) {
+      (data, response, error) in
+      completion(data, response, error)
+    }.resume()
+  }
+  
+  func downloadUserImage(url: URL) {
+    print("Download started")
+    getImageFromUrl(url: url) { (data, response, error) in
+      guard let data = data, error == nil else { return }
+      print ("Download finished")
+      DispatchQueue.main.async { () -> Void in
+        let userImageData = data
+        // save to file
+        let documentsDirectoryUrl = try! FileManager().url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+        let fileUrl = documentsDirectoryUrl.appendingPathComponent("\(String(describing: self.googleUsersId)).png")
+        
+        do {
+          try userImageData.write(to: fileUrl)
+          print("Image was saved")
+        } catch {
+          print(error)
+        }
+      }
+    }
+  }
+  
   func applicationWillResignActive(_ application: UIApplication) {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
@@ -47,26 +162,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   // MARK: - Core Data stack
 
   lazy var persistentContainer: NSPersistentContainer = {
-      /*
-       The persistent container for the application. This implementation
-       creates and returns a container, having loaded the store for the
-       application to it. This property is optional since there are legitimate
-       error conditions that could cause the creation of the store to fail.
-      */
+      // create / return container for appplication
       let container = NSPersistentContainer(name: "todolist")
       container.loadPersistentStores(completionHandler: { (storeDescription, error) in
           if let error = error as NSError? {
               // Replace this implementation with code to handle the error appropriately.
               // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-               
-              /*
-               Typical reasons for an error here include:
-               * The parent directory does not exist, cannot be created, or disallows writing.
-               * The persistent store is not accessible, due to permissions or data protection when the device is locked.
-               * The device is out of space.
-               * The store could not be migrated to the current model version.
-               Check the error message to determine what the actual problem was.
-               */
               fatalError("Unresolved error \(error), \(error.userInfo)")
           }
       })
@@ -87,6 +188,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
               fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
           }
       }
+  }
+  
+  static func shared() -> AppDelegate {
+    return UIApplication.shared.delegate as! AppDelegate
   }
 
 }

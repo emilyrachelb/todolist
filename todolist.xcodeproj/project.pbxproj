@@ -14,6 +14,13 @@
 		15258A241F828B6800B201EA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15258A221F828B6800B201EA /* LaunchScreen.storyboard */; };
 		15258A2F1F828B6800B201EA /* todolistTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15258A2E1F828B6800B201EA /* todolistTests.swift */; };
 		15258A3A1F828B6800B201EA /* todolistUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15258A391F828B6800B201EA /* todolistUITests.swift */; };
+		15EC5F7B1F829FDC0096FBF1 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EC5F7A1F829FDC0096FBF1 /* Reachability.swift */; };
+		15EC5F801F82A0430096FBF1 /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EC5F7F1F82A0430096FBF1 /* HealthKitManager.swift */; };
+		15EC5F841F82B13E0096FBF1 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15EC5F831F82B13E0096FBF1 /* HealthKit.framework */; };
+		15EC5F861F82B2AE0096FBF1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 15EC5F851F82B2150096FBF1 /* GoogleService-Info.plist */; };
+		15EC5F881F82B3550096FBF1 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EC5F871F82B3550096FBF1 /* SignInViewController.swift */; };
+		15EC5F8A1F82BDB10096FBF1 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EC5F891F82BDB10096FBF1 /* HomeViewController.swift */; };
+		15EC5F8D1F82BE320096FBF1 /* WriteUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EC5F8C1F82BE320096FBF1 /* WriteUserData.swift */; };
 		35037FD51334A3CB9D8E931C /* Pods_todolist.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A3C07B6C79D85690A9F7687 /* Pods_todolist.framework */; };
 		8DFA2B51A0A76D5EBCA7A139 /* Pods_todolistTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3603D77E1BBF1895BEDA7A3 /* Pods_todolistTests.framework */; };
 		9870E1DA1A4C994015B47A2E /* Pods_todolistUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99D8BF1522EA8E91B89B0174 /* Pods_todolistUITests.framework */; };
@@ -51,7 +58,14 @@
 		15258A351F828B6800B201EA /* todolistUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = todolistUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		15258A391F828B6800B201EA /* todolistUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = todolistUITests.swift; sourceTree = "<group>"; };
 		15258A3B1F828B6800B201EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		15EC5EF61F829B120096FBF1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		15EC5F7A1F829FDC0096FBF1 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		15EC5F7F1F82A0430096FBF1 /* HealthKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
+		15EC5F821F82B13E0096FBF1 /* todolist.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = todolist.entitlements; sourceTree = "<group>"; };
+		15EC5F831F82B13E0096FBF1 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		15EC5F851F82B2150096FBF1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		15EC5F871F82B3550096FBF1 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		15EC5F891F82BDB10096FBF1 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		15EC5F8C1F82BE320096FBF1 /* WriteUserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteUserData.swift; sourceTree = "<group>"; };
 		25334F7AF9F489F8C929D10F /* Pods-todolistUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-todolistUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-todolistUITests/Pods-todolistUITests.release.xcconfig"; sourceTree = "<group>"; };
 		7FFAB488755DBB0E927C2B67 /* Pods-todolist.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-todolist.release.xcconfig"; path = "Pods/Target Support Files/Pods-todolist/Pods-todolist.release.xcconfig"; sourceTree = "<group>"; };
 		99D8BF1522EA8E91B89B0174 /* Pods_todolistUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_todolistUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -68,6 +82,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				35037FD51334A3CB9D8E931C /* Pods_todolist.framework in Frameworks */,
+				15EC5F841F82B13E0096FBF1 /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -128,14 +143,18 @@
 		15258A151F828B6800B201EA /* todolist */ = {
 			isa = PBXGroup;
 			children = (
+				15EC5F821F82B13E0096FBF1 /* todolist.entitlements */,
+				15EC5F7E1F82A0330096FBF1 /* HealthKit */,
 				15EC5F791F829EC70096FBF1 /* View Controllers */,
+				15EC5F8B1F82BDE70096FBF1 /* Helpers */,
 				15258A161F828B6800B201EA /* AppDelegate.swift */,
 				15258A1A1F828B6800B201EA /* Main.storyboard */,
 				15258A201F828B6800B201EA /* Assets.xcassets */,
 				15258A221F828B6800B201EA /* LaunchScreen.storyboard */,
 				15258A251F828B6800B201EA /* Info.plist */,
-				15EC5EF61F829B120096FBF1 /* GoogleService-Info.plist */,
 				15258A1D1F828B6800B201EA /* todolist.xcdatamodeld */,
+				15EC5F7A1F829FDC0096FBF1 /* Reachability.swift */,
+				15EC5F851F82B2150096FBF1 /* GoogleService-Info.plist */,
 			);
 			path = todolist;
 			sourceTree = "<group>";
@@ -161,13 +180,32 @@
 		15EC5F791F829EC70096FBF1 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				15EC5F871F82B3550096FBF1 /* SignInViewController.swift */,
+				15EC5F891F82BDB10096FBF1 /* HomeViewController.swift */,
 			);
 			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		15EC5F7E1F82A0330096FBF1 /* HealthKit */ = {
+			isa = PBXGroup;
+			children = (
+				15EC5F7F1F82A0430096FBF1 /* HealthKitManager.swift */,
+			);
+			path = HealthKit;
+			sourceTree = "<group>";
+		};
+		15EC5F8B1F82BDE70096FBF1 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				15EC5F8C1F82BE320096FBF1 /* WriteUserData.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		9E6FA741C6A7B031E1DE84D9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				15EC5F831F82B13E0096FBF1 /* HealthKit.framework */,
 				0A3C07B6C79D85690A9F7687 /* Pods_todolist.framework */,
 				D3603D77E1BBF1895BEDA7A3 /* Pods_todolistTests.framework */,
 				99D8BF1522EA8E91B89B0174 /* Pods_todolistUITests.framework */,
@@ -253,6 +291,11 @@
 					15258A121F828B6800B201EA = {
 						CreatedOnToolsVersion = 9.0;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.HealthKit = {
+								enabled = 1;
+							};
+						};
 					};
 					15258A291F828B6800B201EA = {
 						CreatedOnToolsVersion = 9.0;
@@ -292,6 +335,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				15258A241F828B6800B201EA /* LaunchScreen.storyboard in Resources */,
+				15EC5F861F82B2AE0096FBF1 /* GoogleService-Info.plist in Resources */,
 				15258A211F828B6800B201EA /* Assets.xcassets in Resources */,
 				15258A1C1F828B6800B201EA /* Main.storyboard in Resources */,
 			);
@@ -499,6 +543,11 @@
 			files = (
 				15258A1F1F828B6800B201EA /* todolist.xcdatamodeld in Sources */,
 				15258A171F828B6800B201EA /* AppDelegate.swift in Sources */,
+				15EC5F801F82A0430096FBF1 /* HealthKitManager.swift in Sources */,
+				15EC5F881F82B3550096FBF1 /* SignInViewController.swift in Sources */,
+				15EC5F7B1F829FDC0096FBF1 /* Reachability.swift in Sources */,
+				15EC5F8A1F82BDB10096FBF1 /* HomeViewController.swift in Sources */,
+				15EC5F8D1F82BE320096FBF1 /* WriteUserData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -665,13 +714,15 @@
 			baseConfigurationReference = C103A60852C79DEFE2B424F8 /* Pods-todolist.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = todolist/todolist.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B6H5QNX3H5;
 				INFOPLIST_FILE = todolist/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ca.samantharachelb.code.todolist;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -681,13 +732,15 @@
 			baseConfigurationReference = 7FFAB488755DBB0E927C2B67 /* Pods-todolist.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = todolist/todolist.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B6H5QNX3H5;
 				INFOPLIST_FILE = todolist/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ca.samantharachelb.code.todolist;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

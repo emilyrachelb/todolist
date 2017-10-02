@@ -1,24 +1,81 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" systemVersion="17A277" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina5_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Sign In View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="SignInViewController" customModule="todolist" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P0z-ZY-n65" customClass="GIDSignInButton">
+                                <rect key="frame" x="31" y="537.66666666666663" width="352" height="48"/>
+                                <color key="backgroundColor" red="0.85091651440000005" green="0.85091651440000005" blue="0.85091651440000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="Glv-9B-UR5"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="48" id="Ozm-cs-ib2"/>
+                                    <constraint firstAttribute="width" constant="352" id="jee-sP-dx9"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="P0z-ZY-n65" secondAttribute="trailing" constant="31" id="8qG-Nb-oSA"/>
+                            <constraint firstItem="P0z-ZY-n65" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="193.5" id="QCG-UX-h9y"/>
+                            <constraint firstItem="P0z-ZY-n65" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="WFI-0U-SeV"/>
+                            <constraint firstItem="P0z-ZY-n65" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="31" id="ucx-BG-EhR"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="googleSignInButton" destination="P0z-ZY-n65" id="VL0-ET-LIJ"/>
+                        <segue destination="9p2-dL-s5g" kind="showDetail" identifier="goToMain" action="showViewController:sender:" id="8nY-S5-26M"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="3Oi-pO-HEg">
+            <objects>
+                <navigationController id="9p2-dL-s5g" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="T6q-E8-1rj">
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="qZC-4L-2si" kind="relationship" relationship="rootViewController" id="DxC-tl-J1D"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="K4H-OW-9Vx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="912" y="87"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="oGy-wf-99c">
+            <objects>
+                <viewController id="qZC-4L-2si" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="94g-r3-Gbh">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="O2l-g0-hYM"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="6a8-en-DJP"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="F96-hB-2v4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1903" y="87"/>
         </scene>
     </scenes>
 </document>
