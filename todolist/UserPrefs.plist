@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>userID</key>
+	<string></string>
+	<key>userName</key>
+	<string></string>
+	<key>userEmail</key>
+	<string></string>
+	<key>userGender</key>
+	<string></string>
+	<key>userPoints</key>
+	<string>0</string>
+	<key>userPhotoUrl</key>
+	<string></string>
+	<key>selectedAppTheme</key>
+	<string>defaultTheme</string>
+	<key>firstRun</key>
+	<false/>
+</dict>
+</plist>

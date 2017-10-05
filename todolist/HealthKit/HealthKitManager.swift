@@ -96,12 +96,4 @@ class HealthKitManager {
   }
 }
 
-extension Date {
-  var lastYear: Date {
-    return Calendar.current.date(byAdding: .day, value: -365, to: self)!
-  }
-  
-  var tomorrow: Date {
-    return Calendar.current.date(byAdding: .day, value: 1, to: self)!
-  }
-}
+

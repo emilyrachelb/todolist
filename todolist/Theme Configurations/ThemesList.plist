@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Available Themes</key>
+	<dict>
+		<key>default</key>
+		<string>defaultTheme</string>
+		<key>dark</key>
+		<string>darkTheme</string>
+		<key>light</key>
+		<string>lightTheme</string>
+		<key>tangerine</key>
+		<string>tangerineTheme</string>
+		<key>sunflower</key>
+		<string>sunflowerTheme</string>
+		<key>blueberry</key>
+		<string>blueberryTheme</string>
+		<key>skyBlue</key>
+		<string>skyBlueTheme</string>
+		<key>amethyst</key>
+		<string>amethystTheme</string>
+		<key>graphite</key>
+		<string>graphiteTheme</string>
+	</dict>
+</dict>
+</plist>
