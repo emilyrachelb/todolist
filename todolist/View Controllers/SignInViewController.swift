@@ -11,10 +11,15 @@ import UIKit
 import HealthKit
 import Firebase
 import GoogleSignIn
+import SwiftyPlistManager
 
 // start SignInController class
 
 class SignInViewController: UIViewController, GIDSignInUIDelegate {
+  
+  // global variables
+  var preferencesArray: NSMutableArray!
+  var plistPath: String!
   
   // MARK: Properties
   @IBOutlet weak var googleSignInButton: GIDSignInButton!
@@ -43,11 +48,18 @@ class SignInViewController: UIViewController, GIDSignInUIDelegate {
     
     // authorize healthkit
     HealthKitManager.sharedInstance.requestHealthKitAuthorization(dataTypesToWrite: nil, dataTypesToRead: dataTypesToRead)
+    
   }
   
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
     
+    if (GIDSignIn.sharedInstance().hasAuthInKeychain()) {
+      print("user signed in")
+      self.performSegue(withIdentifier: "goToMain", sender: nil)
+    } else {
+      print ("user not signed in")
+    }
   }
 
 }

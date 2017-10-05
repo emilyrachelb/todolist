@@ -14,6 +14,10 @@
 		15258A241F828B6800B201EA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15258A221F828B6800B201EA /* LaunchScreen.storyboard */; };
 		15258A2F1F828B6800B201EA /* todolistTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15258A2E1F828B6800B201EA /* todolistTests.swift */; };
 		15258A3A1F828B6800B201EA /* todolistUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15258A391F828B6800B201EA /* todolistUITests.swift */; };
+		15271C1D1F859EDD008E4662 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15271C1C1F859EDD008E4662 /* SettingsViewController.swift */; };
+		15271C1F1F85A4D6008E4662 /* ThemeSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15271C1E1F85A4D6008E4662 /* ThemeSettingsViewController.swift */; };
+		15271C211F85A579008E4662 /* Themes.plist in Resources */ = {isa = PBXBuildFile; fileRef = 15271C201F85A579008E4662 /* Themes.plist */; };
+		158AAC541F8542C600AEE39E /* Preferences.plist in Resources */ = {isa = PBXBuildFile; fileRef = 158AAC531F8542C600AEE39E /* Preferences.plist */; };
 		15EC5F7B1F829FDC0096FBF1 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EC5F7A1F829FDC0096FBF1 /* Reachability.swift */; };
 		15EC5F801F82A0430096FBF1 /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EC5F7F1F82A0430096FBF1 /* HealthKitManager.swift */; };
 		15EC5F841F82B13E0096FBF1 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15EC5F831F82B13E0096FBF1 /* HealthKit.framework */; };
@@ -58,6 +62,10 @@
 		15258A351F828B6800B201EA /* todolistUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = todolistUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		15258A391F828B6800B201EA /* todolistUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = todolistUITests.swift; sourceTree = "<group>"; };
 		15258A3B1F828B6800B201EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		15271C1C1F859EDD008E4662 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		15271C1E1F85A4D6008E4662 /* ThemeSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeSettingsViewController.swift; sourceTree = "<group>"; };
+		15271C201F85A579008E4662 /* Themes.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Themes.plist; sourceTree = "<group>"; };
+		158AAC531F8542C600AEE39E /* Preferences.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Preferences.plist; sourceTree = "<group>"; };
 		15EC5F7A1F829FDC0096FBF1 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		15EC5F7F1F82A0430096FBF1 /* HealthKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
 		15EC5F821F82B13E0096FBF1 /* todolist.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = todolist.entitlements; sourceTree = "<group>"; };
@@ -155,6 +163,9 @@
 				15258A1D1F828B6800B201EA /* todolist.xcdatamodeld */,
 				15EC5F7A1F829FDC0096FBF1 /* Reachability.swift */,
 				15EC5F851F82B2150096FBF1 /* GoogleService-Info.plist */,
+				158AAC531F8542C600AEE39E /* Preferences.plist */,
+				15271C201F85A579008E4662 /* Themes.plist */,
+				15271C221F85B4AA008E4662 /* theme configuration */,
 			);
 			path = todolist;
 			sourceTree = "<group>";
@@ -177,11 +188,20 @@
 			path = todolistUITests;
 			sourceTree = "<group>";
 		};
+		15271C221F85B4AA008E4662 /* theme configuration */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "theme configuration";
+			sourceTree = "<group>";
+		};
 		15EC5F791F829EC70096FBF1 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				15EC5F871F82B3550096FBF1 /* SignInViewController.swift */,
 				15EC5F891F82BDB10096FBF1 /* HomeViewController.swift */,
+				15271C1C1F859EDD008E4662 /* SettingsViewController.swift */,
+				15271C1E1F85A4D6008E4662 /* ThemeSettingsViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -226,6 +246,7 @@
 				15258A111F828B6800B201EA /* Resources */,
 				34176434EB3EBBCC68AE8B96 /* [CP] Embed Pods Frameworks */,
 				84C2CFB524B1395B8A6CAA43 /* [CP] Copy Pods Resources */,
+				15EC5F8E1F82E4940096FBF1 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -334,10 +355,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15271C211F85A579008E4662 /* Themes.plist in Resources */,
 				15258A241F828B6800B201EA /* LaunchScreen.storyboard in Resources */,
 				15EC5F861F82B2AE0096FBF1 /* GoogleService-Info.plist in Resources */,
 				15258A211F828B6800B201EA /* Assets.xcassets in Resources */,
 				15258A1C1F828B6800B201EA /* Main.storyboard in Resources */,
+				158AAC541F8542C600AEE39E /* Preferences.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -391,6 +414,19 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		15EC5F8E1F82E4940096FBF1 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Replace this with the GOOGLE_APP_ID from your GoogleService-Info.plist file\nGOOGLE_APP_ID=1:769134238644:ios:55d24dfaaa402ac1\n\n# Replace the /Path/To/ServiceAccount.json with the path to the key you just downloaded\n\"${PODS_ROOT}\"/FirebaseCrash/upload-sym \"./todolist-d545d-firebase-crashreporting-07h6w-dbd8cf707e.json\"";
+		};
 		2D111D1DC05B4ADA24465220 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -416,33 +452,25 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-todolist/Pods-todolist-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
-				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
-				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
-				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
-				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/NBNRequestKit/RequestKit.framework",
 				"${BUILT_PRODUCTS_DIR}/OctoKit.swift/Octokit.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyPlistManager/SwiftyPlistManager.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RequestKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Octokit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyPlistManager.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -459,8 +487,6 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-todolist/Pods-todolist-resources.sh",
 				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
-				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework/TwitterKitResources.bundle",
-				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework/TwitterShareExtensionUIResources.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
@@ -546,8 +572,10 @@
 				15EC5F801F82A0430096FBF1 /* HealthKitManager.swift in Sources */,
 				15EC5F881F82B3550096FBF1 /* SignInViewController.swift in Sources */,
 				15EC5F7B1F829FDC0096FBF1 /* Reachability.swift in Sources */,
+				15271C1F1F85A4D6008E4662 /* ThemeSettingsViewController.swift in Sources */,
 				15EC5F8A1F82BDB10096FBF1 /* HomeViewController.swift in Sources */,
 				15EC5F8D1F82BE320096FBF1 /* WriteUserData.swift in Sources */,
+				15271C1D1F859EDD008E4662 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
