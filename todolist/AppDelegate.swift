@@ -10,6 +10,7 @@ import UIKit
 import CoreData
 import Firebase
 import GoogleSignIn
+import SwiftyPlistManager
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
@@ -17,10 +18,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
   var window: UIWindow?
   
   // app specific variables
-  var applicationUserId: String!
-  var authProvider: String!
   var connectionAvailable: Bool!
-  var usersPhoto: UIImageView!
+  var plistPathInDocument: String = String()
+  let userDefaults = UserDefaults.standard
+  let plistManager = SwiftyPlistManager.shared
+  var preferencesPlist = "Preferences"
+  var userNameKey = "userName"
+  var userIDKey = "userID"
+  var userEmailKey = "userEmail"
+  var userGenderKey = "userGender"
   
   // google signin user variables
   var googleUsersId = String()
@@ -29,7 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
   var googleUsersGender = String()
   var googleUsersPhoto: URL!
   var googleUsersPhotoAsString = String()
-  
+
   // create firebase database reference
   var databaseRef: DatabaseReference!
   
@@ -38,14 +44,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
  
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-    // Override point for customization after application launch.
-    
     // initialize firebase application
     FirebaseApp.configure()
     
     // google login instance setup
     GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
     GIDSignIn.sharedInstance().delegate = self
+    
     
     return true
   }
@@ -65,6 +70,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     }
   }
   
+  
   func sign(_ signIn: GIDSignIn, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
     if error != nil {
       return
@@ -73,14 +79,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     guard let authentication = user.authentication else { return }
     let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
     
-    // save app userID
-    let currentUser = Auth.auth().currentUser
-    if let currentUser = currentUser {
-      self.applicationUserId = currentUser.uid
-    }
-    print(applicationUserId)
-    authProvider = "google"
-    
     // retrieve details from the google user's profile
     googleUsersId = user.userID
     googleUsersName = user.profile.name
@@ -88,15 +86,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     googleUsersPhoto = user.profile.imageURL(withDimension: 100 * UInt(UIScreen.main.scale))!
     googleUsersPhotoAsString = googleUsersPhoto.absoluteString
     
+    print("appdelegate value: " + googleUsersId)
+    print("appdelegate value: " + googleUsersEmail)
+    print("appdelegate value: " + googleUsersName)
+    plistManager.start(plistNames: ["Preferences"], logging: true)
+    plistManager.addNew(googleUsersId, key: userIDKey, toPlistWithName: preferencesPlist) { (err) in
+      if err == nil { return }
+    }
+    plistManager.addNew(googleUsersName, key: userNameKey, toPlistWithName: preferencesPlist) { (err) in
+      if err == nil { return }
+    }
+    plistManager.addNew(googleUsersEmail, key: userEmailKey, toPlistWithName: preferencesPlist) { (err) in
+      if err == nil { return }
+    }
+    
     self.databaseRef = Database.database().reference()
-    self.databaseRef.child("user_profiles").child(self.applicationUserId).child(self.authProvider).observeSingleEvent(of: .value, with: { (snapshot) in
+    self.databaseRef.child("user_profiles").child(self.googleUsersId).observeSingleEvent(of: .value, with: { (snapshot) in
       let snapshot = snapshot.value as? NSDictionary
       
       if (snapshot == nil) {
-        self.databaseRef.child("user_profiles").child(self.applicationUserId).child(self.authProvider).child("id").setValue(self.googleUsersId)
-        self.databaseRef.child("user_profiles").child(self.applicationUserId).child(self.authProvider).child("name").setValue(self.googleUsersName)
-        self.databaseRef.child("user_profiles").child(self.applicationUserId).child(self.authProvider).child("email").setValue(self.googleUsersEmail)
-        self.databaseRef.child("user_profiles").child(self.applicationUserId).child(self.authProvider).child("image_url").setValue(self.googleUsersPhotoAsString)
+        self.databaseRef.child("user_profiles").child(self.googleUsersId).child("id").setValue(self.googleUsersId)
+        self.databaseRef.child("user_profiles").child(self.googleUsersId).child("name").setValue(self.googleUsersName)
+        self.databaseRef.child("user_profiles").child(self.googleUsersId).child("email").setValue(self.googleUsersEmail)
+        self.databaseRef.child("user_profiles").child(self.googleUsersId).child("image_url").setValue(self.googleUsersPhotoAsString)
       }
     })
     Auth.auth().signIn(with: credential) { (user, error) in
@@ -106,6 +118,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     }
     return
   }
+  
   // get image from source asynchronously
   func getImageFromUrl(url: URL, completion: @escaping (_ data: Data?, _ response: URLResponse?, _ error: Error?) -> Void) {
     URLSession.shared.dataTask(with: url) {
@@ -150,7 +163,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
   }
 
   func applicationDidBecomeActive(_ application: UIApplication) {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    
   }
 
   func applicationWillTerminate(_ application: UIApplication) {

@@ -7,8 +7,6 @@ target 'todolist' do
 
   # Pods for todolist
   pod 'GoogleSignIn'
-  pod 'FacebookCore'
-  pod 'FacebookLogin'
   pod 'Firebase/Auth'
   pod 'Firebase/Core'
   pod 'Firebase/Crash'
@@ -17,7 +15,7 @@ target 'todolist' do
   pod 'Firebase/Messaging'
   pod 'Firebase/Performance'
   pod 'OctoKit.swift'
-  pod 'TwitterKit'
+  pod 'SwiftyPlistManager'
 
   target 'todolistTests' do
     inherit! :search_paths
