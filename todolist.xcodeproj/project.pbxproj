@@ -17,6 +17,16 @@
 		15271C1D1F859EDD008E4662 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15271C1C1F859EDD008E4662 /* SettingsViewController.swift */; };
 		15271C1F1F85A4D6008E4662 /* ThemeSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15271C1E1F85A4D6008E4662 /* ThemeSettingsViewController.swift */; };
 		15271C211F85A579008E4662 /* Themes.plist in Resources */ = {isa = PBXBuildFile; fileRef = 15271C201F85A579008E4662 /* Themes.plist */; };
+		15271C241F85B5A4008E4662 /* defaultTheme.plist in Resources */ = {isa = PBXBuildFile; fileRef = 15271C231F85B5A4008E4662 /* defaultTheme.plist */; };
+		15271C261F85B5BB008E4662 /* darkTheme.plist in Resources */ = {isa = PBXBuildFile; fileRef = 15271C251F85B5BB008E4662 /* darkTheme.plist */; };
+		15271C281F85B5C3008E4662 /* lightTheme.plist in Resources */ = {isa = PBXBuildFile; fileRef = 15271C271F85B5C3008E4662 /* lightTheme.plist */; };
+		15271C2A1F85B5CD008E4662 /* tangerineTheme.plist in Resources */ = {isa = PBXBuildFile; fileRef = 15271C291F85B5CD008E4662 /* tangerineTheme.plist */; };
+		15271C2C1F85B5D3008E4662 /* sunflowerTheme.plist in Resources */ = {isa = PBXBuildFile; fileRef = 15271C2B1F85B5D3008E4662 /* sunflowerTheme.plist */; };
+		15271C2E1F85B5E3008E4662 /* cloverTheme.plist in Resources */ = {isa = PBXBuildFile; fileRef = 15271C2D1F85B5E3008E4662 /* cloverTheme.plist */; };
+		15271C301F85B5EB008E4662 /* blueberryTheme.plist in Resources */ = {isa = PBXBuildFile; fileRef = 15271C2F1F85B5EB008E4662 /* blueberryTheme.plist */; };
+		15271C321F85B5F4008E4662 /* skyBlueTheme.plist in Resources */ = {isa = PBXBuildFile; fileRef = 15271C311F85B5F4008E4662 /* skyBlueTheme.plist */; };
+		15271C341F85B5FA008E4662 /* amethystTheme.plist in Resources */ = {isa = PBXBuildFile; fileRef = 15271C331F85B5FA008E4662 /* amethystTheme.plist */; };
+		15271C361F85B609008E4662 /* graphiteTheme.plist in Resources */ = {isa = PBXBuildFile; fileRef = 15271C351F85B609008E4662 /* graphiteTheme.plist */; };
 		158AAC541F8542C600AEE39E /* Preferences.plist in Resources */ = {isa = PBXBuildFile; fileRef = 158AAC531F8542C600AEE39E /* Preferences.plist */; };
 		15EC5F7B1F829FDC0096FBF1 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EC5F7A1F829FDC0096FBF1 /* Reachability.swift */; };
 		15EC5F801F82A0430096FBF1 /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EC5F7F1F82A0430096FBF1 /* HealthKitManager.swift */; };
@@ -65,6 +75,16 @@
 		15271C1C1F859EDD008E4662 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		15271C1E1F85A4D6008E4662 /* ThemeSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeSettingsViewController.swift; sourceTree = "<group>"; };
 		15271C201F85A579008E4662 /* Themes.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Themes.plist; sourceTree = "<group>"; };
+		15271C231F85B5A4008E4662 /* defaultTheme.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = defaultTheme.plist; sourceTree = "<group>"; };
+		15271C251F85B5BB008E4662 /* darkTheme.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = darkTheme.plist; sourceTree = "<group>"; };
+		15271C271F85B5C3008E4662 /* lightTheme.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = lightTheme.plist; sourceTree = "<group>"; };
+		15271C291F85B5CD008E4662 /* tangerineTheme.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = tangerineTheme.plist; sourceTree = "<group>"; };
+		15271C2B1F85B5D3008E4662 /* sunflowerTheme.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = sunflowerTheme.plist; sourceTree = "<group>"; };
+		15271C2D1F85B5E3008E4662 /* cloverTheme.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = cloverTheme.plist; sourceTree = "<group>"; };
+		15271C2F1F85B5EB008E4662 /* blueberryTheme.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = blueberryTheme.plist; sourceTree = "<group>"; };
+		15271C311F85B5F4008E4662 /* skyBlueTheme.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = skyBlueTheme.plist; sourceTree = "<group>"; };
+		15271C331F85B5FA008E4662 /* amethystTheme.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = amethystTheme.plist; sourceTree = "<group>"; };
+		15271C351F85B609008E4662 /* graphiteTheme.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = graphiteTheme.plist; sourceTree = "<group>"; };
 		158AAC531F8542C600AEE39E /* Preferences.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Preferences.plist; sourceTree = "<group>"; };
 		15EC5F7A1F829FDC0096FBF1 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		15EC5F7F1F82A0430096FBF1 /* HealthKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
@@ -191,6 +211,16 @@
 		15271C221F85B4AA008E4662 /* theme configuration */ = {
 			isa = PBXGroup;
 			children = (
+				15271C231F85B5A4008E4662 /* defaultTheme.plist */,
+				15271C251F85B5BB008E4662 /* darkTheme.plist */,
+				15271C271F85B5C3008E4662 /* lightTheme.plist */,
+				15271C291F85B5CD008E4662 /* tangerineTheme.plist */,
+				15271C2B1F85B5D3008E4662 /* sunflowerTheme.plist */,
+				15271C2D1F85B5E3008E4662 /* cloverTheme.plist */,
+				15271C2F1F85B5EB008E4662 /* blueberryTheme.plist */,
+				15271C311F85B5F4008E4662 /* skyBlueTheme.plist */,
+				15271C331F85B5FA008E4662 /* amethystTheme.plist */,
+				15271C351F85B609008E4662 /* graphiteTheme.plist */,
 			);
 			path = "theme configuration";
 			sourceTree = "<group>";
@@ -356,10 +386,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				15271C211F85A579008E4662 /* Themes.plist in Resources */,
+				15271C301F85B5EB008E4662 /* blueberryTheme.plist in Resources */,
 				15258A241F828B6800B201EA /* LaunchScreen.storyboard in Resources */,
+				15271C2A1F85B5CD008E4662 /* tangerineTheme.plist in Resources */,
+				15271C361F85B609008E4662 /* graphiteTheme.plist in Resources */,
+				15271C241F85B5A4008E4662 /* defaultTheme.plist in Resources */,
 				15EC5F861F82B2AE0096FBF1 /* GoogleService-Info.plist in Resources */,
+				15271C281F85B5C3008E4662 /* lightTheme.plist in Resources */,
+				15271C2C1F85B5D3008E4662 /* sunflowerTheme.plist in Resources */,
 				15258A211F828B6800B201EA /* Assets.xcassets in Resources */,
 				15258A1C1F828B6800B201EA /* Main.storyboard in Resources */,
+				15271C321F85B5F4008E4662 /* skyBlueTheme.plist in Resources */,
+				15271C2E1F85B5E3008E4662 /* cloverTheme.plist in Resources */,
+				15271C261F85B5BB008E4662 /* darkTheme.plist in Resources */,
+				15271C341F85B5FA008E4662 /* amethystTheme.plist in Resources */,
 				158AAC541F8542C600AEE39E /* Preferences.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
