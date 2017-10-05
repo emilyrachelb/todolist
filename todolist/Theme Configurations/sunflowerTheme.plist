@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>headerBarColour</key>
+	<string>0xFBCB00</string>
+	<key>headerTextColour</key>
+	<string>0xFFFFFF</string>
+	<key>textHighlightColour</key>
+	<string>0xFBCB00</string>
+	<key>highlightedTextColour</key>
+	<string>0xFFFFFF</string>
+	<key>premium</key>
+	<true/>
+	<key>useLightStatusBar</key>
+	<true/>
+</dict>
+</plist>

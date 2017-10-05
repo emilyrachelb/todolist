@@ -22,11 +22,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
   var plistPathInDocument: String = String()
   let userDefaults = UserDefaults.standard
   let plistManager = SwiftyPlistManager.shared
-  var preferencesPlist = "Preferences"
-  var userNameKey = "userName"
-  var userIDKey = "userID"
-  var userEmailKey = "userEmail"
-  var userGenderKey = "userGender"
+  
+  // plist list
+  var preferencesPlist = "UserPrefs"
+  var themesPlist = "ThemesList"
+  
+  // individual theme property lists
+  var theme0 = "defaultTheme"
+  var theme1 = "lightTheme"
+  var theme2 = "darkTheme"
+  var theme3 = "tangerineTheme"
+  var theme4 = "sunflowerTheme"
+  var theme5 = "cloverTheme"
+  var theme6 = "blueberryTheme"
+  var theme7 = "skyBlueTheme"
+  var theme8 = "amethystTheme"
+  var theme9 = "graphiteTheme"
   
   // google signin user variables
   var googleUsersId = String()
@@ -51,6 +62,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
     GIDSignIn.sharedInstance().delegate = self
     
+    plistManager.start(plistNames: [preferencesPlist, themesPlist, theme0, theme1, theme2, theme3, theme4, theme5, theme6, theme7, theme8, theme9], logging: true)
     
     return true
   }
@@ -89,14 +101,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     print("appdelegate value: " + googleUsersId)
     print("appdelegate value: " + googleUsersEmail)
     print("appdelegate value: " + googleUsersName)
-    plistManager.start(plistNames: ["Preferences"], logging: true)
-    plistManager.addNew(googleUsersId, key: userIDKey, toPlistWithName: preferencesPlist) { (err) in
-      if err == nil { return }
-    }
-    plistManager.addNew(googleUsersName, key: userNameKey, toPlistWithName: preferencesPlist) { (err) in
-      if err == nil { return }
-    }
-    plistManager.addNew(googleUsersEmail, key: userEmailKey, toPlistWithName: preferencesPlist) { (err) in
+    
+    plistManager.save(googleUsersPhotoAsString, forKey: "userPhotoUrl", toPlistWithName: preferencesPlist) { (err) in
       if err == nil { return }
     }
     
