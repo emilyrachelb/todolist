@@ -164,12 +164,12 @@
         <!--Home View Controller-->
         <scene sceneID="9bg-ww-kCH">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="XO6-Gg-ukq" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="tBv-iz-gOZ" customClass="HomeViewController" customModule="todolist" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9lu-C0-dQR">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="EQz-Gf-4Vo"/>
                     </view>
                     <navigationItem key="navigationItem" id="sDR-kR-ugJ">
                         <leftBarButtonItems>
@@ -183,6 +183,7 @@
                         <outlet property="userNameButton" destination="b2U-Jz-ZnO" id="AMj-Ak-uOG"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XO6-Gg-ukq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2235" y="121"/>
         </scene>
