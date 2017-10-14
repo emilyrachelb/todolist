@@ -12,11 +12,11 @@
 	<string></string>
 	<key>userPoints</key>
 	<string>0</string>
-	<key>userPhotoUrl</key>
+	<key>userPhoto</key>
 	<string></string>
 	<key>selectedAppTheme</key>
 	<string>defaultTheme</string>
-	<key>firstRun</key>
+	<key>hasRunBefore</key>
 	<false/>
 </dict>
 </plist>
