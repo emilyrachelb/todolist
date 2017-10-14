@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
   let plistManager = SwiftyPlistManager.shared
   
   // plist list
-  var preferencesPlist = "UserPrefs"
+  var userPrefs = "UserPrefs"
   var themesPlist = "ThemesList"
   
   // individual theme property lists
@@ -44,25 +44,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
   var googleUsersName = String()
   var googleUsersEmail = String()
   var googleUsersGender = String()
-  var googleUsersPhoto: URL!
+  var googleUsersPhoto: URL?
   var googleUsersPhotoAsString = String()
-
-  // create firebase database reference
+  
+  // create database reference
   var databaseRef: DatabaseReference!
   
   // internet connectivity
   var internetConnected: Bool!
  
+  // theme things
+  var navbarAppearance = UINavigationBar.appearance()
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     // initialize firebase application
     FirebaseApp.configure()
+    Database.database().isPersistenceEnabled = true
     
     // google login instance setup
     GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
     GIDSignIn.sharedInstance().delegate = self
     
-    plistManager.start(plistNames: [preferencesPlist, themesPlist, theme0, theme1, theme2, theme3, theme4, theme5, theme6, theme7, theme8, theme9], logging: true)
+    plistManager.start(plistNames: [userPrefs, themesPlist, theme0, theme1, theme2, theme3, theme4, theme5, theme6, theme7, theme8, theme9], logging: true)
+    
+    // get the name of the currently selected theme
+    let currentTheme = plistManager.fetchValue(for: "selectedAppTheme", fromPlistWithName: userPrefs) as! String!
+    
+    // get colours from theme file
+    let headerBarColour = plistManager.fetchValue(for: "headerBarColour", fromPlistWithName: currentTheme!) as! String!
+    let headerTextColour = plistManager.fetchValue(for: "headerTextColour", fromPlistWithName: currentTheme!) as! String!
+    
+    UINavigationBar.appearance().barTintColor = UIColor().hexToColour(hexString: headerBarColour!)
+    UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor().hexToColour(hexString: headerTextColour!)]
     
     return true
   }
@@ -96,20 +109,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     googleUsersName = user.profile.name
     googleUsersEmail = user.profile.email
     googleUsersPhoto = user.profile.imageURL(withDimension: 100 * UInt(UIScreen.main.scale))!
-    googleUsersPhotoAsString = googleUsersPhoto.absoluteString
+    googleUsersPhotoAsString = "\(String(describing: googleUsersPhoto!))"
     
     print("appdelegate value: " + googleUsersId)
     print("appdelegate value: " + googleUsersEmail)
     print("appdelegate value: " + googleUsersName)
-    
-    plistManager.save(googleUsersPhotoAsString, forKey: "userPhotoUrl", toPlistWithName: preferencesPlist) { (err) in
-      if err == nil { return }
-    }
+    print("appdelegate value: " + googleUsersPhotoAsString)
     
     self.databaseRef = Database.database().reference()
     self.databaseRef.child("user_profiles").child(self.googleUsersId).observeSingleEvent(of: .value, with: { (snapshot) in
       let snapshot = snapshot.value as? NSDictionary
-      
+
       if (snapshot == nil) {
         self.databaseRef.child("user_profiles").child(self.googleUsersId).child("id").setValue(self.googleUsersId)
         self.databaseRef.child("user_profiles").child(self.googleUsersId).child("name").setValue(self.googleUsersName)
@@ -117,41 +127,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         self.databaseRef.child("user_profiles").child(self.googleUsersId).child("image_url").setValue(self.googleUsersPhotoAsString)
       }
     })
+    
     Auth.auth().signIn(with: credential) { (user, error) in
       if error != nil {
         return
       }
     }
-    return
-  }
-  
-  // get image from source asynchronously
-  func getImageFromUrl(url: URL, completion: @escaping (_ data: Data?, _ response: URLResponse?, _ error: Error?) -> Void) {
-    URLSession.shared.dataTask(with: url) {
-      (data, response, error) in
-      completion(data, response, error)
-    }.resume()
-  }
-  
-  func downloadUserImage(url: URL) {
-    print("Download started")
-    getImageFromUrl(url: url) { (data, response, error) in
-      guard let data = data, error == nil else { return }
-      print ("Download finished")
-      DispatchQueue.main.async { () -> Void in
-        let userImageData = data
-        // save to file
-        let documentsDirectoryUrl = try! FileManager().url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
-        let fileUrl = documentsDirectoryUrl.appendingPathComponent("\(String(describing: self.googleUsersId)).png")
-        
-        do {
-          try userImageData.write(to: fileUrl)
-          print("Image was saved")
-        } catch {
-          print(error)
-        }
-      }
+    
+    plistManager.save(googleUsersId as String!, forKey: "userID", toPlistWithName: userPrefs) { (err) in
+      if err == nil { return }
     }
+    
+    plistManager.save(googleUsersName, forKey: "userName", toPlistWithName: userPrefs) { (err) in
+      if err == nil { return }
+    }
+    
+    plistManager.save(googleUsersEmail, forKey: "userEmail", toPlistWithName: userPrefs) { (err) in
+      if err == nil { return }
+    }
+    
+    plistManager.save(googleUsersPhotoAsString, forKey: "userPhoto", toPlistWithName: userPrefs) { (err) in
+      if err == nil { return }
+    }
+    
+    return
   }
   
   func applicationWillResignActive(_ application: UIApplication) {
