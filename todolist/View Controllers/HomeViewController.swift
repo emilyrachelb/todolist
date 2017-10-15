@@ -14,7 +14,6 @@ import HealthKit
 import SwiftyPlistManager
 import Alamofire
 import AlamofireImage
-import LBTAComponents
 
 class HomeViewController: UINavigationController, UINavigationControllerDelegate, GIDSignInUIDelegate{
 
@@ -53,6 +52,7 @@ class HomeViewController: UINavigationController, UINavigationControllerDelegate
   @IBOutlet weak var navItem: UINavigationItem?
   @IBOutlet weak var userAvatarButton: UIBarButtonItem!
   @IBOutlet weak var userNameButton: UIBarButtonItem!
+  @IBOutlet weak var settingsButton: UIBarButtonItem!
   
   private enum IdentifyingDataFields: Int {
     case DateOfBirth, BiologicalSex
@@ -103,6 +103,8 @@ class HomeViewController: UINavigationController, UINavigationControllerDelegate
     if (statusBarCheck) {
       UIApplication.shared.statusBarStyle = .lightContent
     }
+    
+    view.backgroundColor = UIColor.white
   }
   
   override func viewDidAppear(_ animated: Bool) {
@@ -147,6 +149,16 @@ class HomeViewController: UINavigationController, UINavigationControllerDelegate
           self.navItem?.leftBarButtonItems = [userAvatarButtonItem, userNameButtonItem]
         }
       }
+      let settingsButton: UIButton = UIButton(type: UIButtonType.custom)
+      settingsButton.setImage(UIImage(named: "settings"), for: UIControlState.normal)
+      settingsButton.addTarget(self, action: #selector(HomeViewController.settingsButtonPressed), for: UIControlEvents.touchUpInside)
+      settingsButton.tintColor = UIColor().hexToColour(hexString: self.headerTextColour)
+      settingsButton.frame = CGRect(x: 0, y:0, width: 10, height: 10)
+      settingsButton.contentMode = .scaleAspectFit
+      
+      let settingsButtonItem = UIBarButtonItem(customView: settingsButton)
+      self.navItem?.rightBarButtonItem = settingsButtonItem
+      
       
     }
 
@@ -154,7 +166,12 @@ class HomeViewController: UINavigationController, UINavigationControllerDelegate
 
   // left navbar item action controller
   func userInfoButtonsPressed() {
-    print("User infoButtons button was pressed!")
+    print("User info buttons button was pressed!")
+  }
+  
+  func settingsButtonPressed() {
+    print("Settings button was pressed")
+    performSegue(withIdentifier: "goToSettings", sender: self)
   }
   
   // retrieve user data
