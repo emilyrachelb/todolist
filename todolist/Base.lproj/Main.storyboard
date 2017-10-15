@@ -40,17 +40,17 @@
                     </view>
                     <connections>
                         <outlet property="googleSignInButton" destination="P0z-ZY-n65" id="VL0-ET-LIJ"/>
-                        <segue destination="SDU-Ld-Sxn" kind="show" identifier="goToMain" animates="NO" id="v87-VV-amd"/>
+                        <segue destination="SDU-Ld-Sxn" kind="showDetail" identifier="goToMain" animates="NO" action="showViewController:sender:" id="v87-VV-amd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="667" y="121"/>
         </scene>
-        <!--Home View Table Controller-->
+        <!--Table View Controller-->
         <scene sceneID="FLY-2p-X0g">
             <objects>
-                <tableViewController id="7zw-4B-PYU" customClass="HomeViewTableController" customModule="todolist" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="7zw-4B-PYU" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="45" sectionHeaderHeight="1" sectionFooterHeight="28" id="cEH-GO-fzW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -139,7 +139,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1h4-rZ-UJp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1546" y="963"/>
+            <point key="canvasLocation" x="2235" y="818"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="Sff-L2-PMh">
@@ -165,31 +165,81 @@
         <scene sceneID="9bg-ww-kCH">
             <objects>
                 <viewController id="tBv-iz-gOZ" customClass="HomeViewController" customModule="todolist" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9lu-C0-dQR">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                    <view key="view" contentMode="scaleToFill" id="zQc-ap-QoF">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="EQz-Gf-4Vo"/>
+                        <viewLayoutGuide key="safeArea" id="tpA-wk-A1r"/>
                     </view>
                     <navigationItem key="navigationItem" id="sDR-kR-ugJ">
+                        <barButtonItem key="backBarButtonItem" title=" " id="MZ1-kE-IVt"/>
                         <leftBarButtonItems>
                             <barButtonItem title="Item" id="n9U-Fe-Fov"/>
                             <barButtonItem title="Item" id="b2U-Jz-ZnO"/>
                         </leftBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="settings" landscapeImage="settings" style="plain" id="Trc-oj-0kr">
+                            <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </barButtonItem>
                     </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
                         <outlet property="navItem" destination="sDR-kR-ugJ" id="V5d-wO-KBC"/>
+                        <outlet property="settingsButton" destination="Trc-oj-0kr" id="eHo-U3-EFT"/>
                         <outlet property="userAvatarButton" destination="n9U-Fe-Fov" id="XEX-lJ-gm6"/>
                         <outlet property="userNameButton" destination="b2U-Jz-ZnO" id="AMj-Ak-uOG"/>
+                        <segue destination="0xA-KG-Y05" kind="show" identifier="goToSettings" id="dae-KV-tQn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XO6-Gg-ukq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2235" y="121"/>
         </scene>
+        <!--Settings View Controller-->
+        <scene sceneID="mwS-sg-Pfx">
+            <objects>
+                <navigationController id="0xA-KG-Y05" customClass="SettingsViewController" customModule="todolist" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="z83-aY-6pP">
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="6nF-vD-E4d" kind="relationship" relationship="rootViewController" id="Wzd-Qh-sAz"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="H5w-Zz-chI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3081" y="121"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="UqO-7r-KOg">
+            <objects>
+                <viewController id="6nF-vD-E4d" customClass="SettingsViewController" customModule="todolist" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="d54-Lp-UvG">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="wjv-Pb-IM2"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Settings" id="heg-6P-Efp">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="aOO-M1-hDL"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="doneButton" destination="aOO-M1-hDL" id="gni-fr-kCV"/>
+                        <outlet property="navItem" destination="heg-6P-Efp" id="4JI-ng-1Gp"/>
+                        <segue destination="tBv-iz-gOZ" kind="show" identifier="returnToHome" id="WgK-ZU-KFo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="j29-Ul-Gsd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3874" y="121"/>
+        </scene>
     </scenes>
     <resources>
         <image name="nextWeek" width="30" height="30"/>
+        <image name="settings" width="20" height="20"/>
         <image name="today" width="30" height="30"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="WgK-ZU-KFo"/>
+    </inferredMetricsTieBreakers>
 </document>
