@@ -59,6 +59,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     // initialize firebase application
     FirebaseApp.configure()
+    let settings = FirestoreSettings()
+    settings.isPersistenceEnabled = true
+    
+    let db = Firestore.firestore()
+    db.settings = settings
     Database.database().isPersistenceEnabled = true
     
     // google login instance setup
