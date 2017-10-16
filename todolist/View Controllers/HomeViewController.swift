@@ -166,7 +166,7 @@ class HomeViewController: UINavigationController, UINavigationControllerDelegate
 
   // left navbar item action controller
   func userInfoButtonsPressed() {
-    print("User info buttons button was pressed!")
+    performSegue(withIdentifier: "goToProfile", sender: self)
   }
   
   func settingsButtonPressed() {

@@ -38,9 +38,9 @@ class UserProfileViewController: UINavigationController, UINavigationControllerD
   // MARK: Properties
   @IBOutlet weak var navItem: UINavigationItem?
   @IBOutlet weak var doneButton: UIBarButtonItem!
-  @IBOutlet weak var userAvatar: UIImageView!
-  @IBOutlet weak var userNameLabel: UILabel!
-  @IBOutlet weak var editProfileButton: UIButton!
+  @IBAction func goToProfile(segue:UIStoryboardSegue) {}
+  
+  
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -51,7 +51,6 @@ class UserProfileViewController: UINavigationController, UINavigationControllerD
     guard let headerBarColour = plistManager.fetchValue(for: "headerBarColour", fromPlistWithName: themeName) as! String! else { return }
     guard let headerTextColour = plistManager.fetchValue(for: "headerTextColour", fromPlistWithName: themeName) as! String! else { return }
     guard let textHighlightColour = plistManager.fetchValue(for: "textHighlightColour", fromPlistWithName: themeName) as! String! else { return }
-    
     // check for light status bar
     guard let statusBarCheck = plistManager.fetchValue(for: "useLightStatusBar", fromPlistWithName: themeName) as! Bool! else { return }
     if (statusBarCheck) {
@@ -67,31 +66,7 @@ class UserProfileViewController: UINavigationController, UINavigationControllerD
   
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
-    // retrieve all of the stored user data
-    retrieveUserInfo()
-    
-    // Download the user's image
-    Alamofire.request(userPhotoUrl).responseImage { response in
-      debugPrint(response)
-      
-      print(response.request)
-      print(response.response)
-      debugPrint(response.result)
-      
-      if let image = response.result.value {
-        print("image downloaded: \(image)")
-        let photoSize = CGSize(width: 40, height: 40)
-        let scaledToFit = image.af_imageAspectScaled(toFit: photoSize)
-        self.userAvatar.image = scaledToFit.af_imageRoundedIntoCircle()
-      }
-    }
-    
-    userNameLabel.textColor = UIColor().hexToColour(hexString: headerTextColour)
-    userNameLabel.text = userName
-    
-    editProfileButton.titleLabel?.textColor = UIColor().hexToColour(hexString: textHighlightColour)
-    editProfileButton.addTarget(self, action: #selector(UserProfileViewController.editProfileButtonPressed), for: UIControlEvents.touchUpInside)
-    
+
   }
   
   // retrieve stored user data

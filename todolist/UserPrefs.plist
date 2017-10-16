@@ -15,7 +15,7 @@
 	<key>userPhoto</key>
 	<string></string>
 	<key>selectedAppTheme</key>
-	<string>defaultTheme</string>
+	<string>tangerineTheme</string>
 	<key>hasRunBefore</key>
 	<false/>
 </dict>
