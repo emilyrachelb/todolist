@@ -34,6 +34,8 @@
 		15271C411F85E440008E4662 /* DelayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15271C401F85E440008E4662 /* DelayExtension.swift */; };
 		158AAC541F8542C600AEE39E /* UserPrefs.plist in Resources */ = {isa = PBXBuildFile; fileRef = 158AAC531F8542C600AEE39E /* UserPrefs.plist */; };
 		159B7C301F8EFE020006CF6A /* TodaysTaskListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159B7C2F1F8EFE020006CF6A /* TodaysTaskListViewController.swift */; };
+		15B0A38F1F945D3C0052A3CD /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B0A38E1F945D3C0052A3CD /* UserProfileViewController.swift */; };
+		15B0A3911F9464E00052A3CD /* UserProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B0A3901F9464E00052A3CD /* UserProfileTableViewController.swift */; };
 		15EC5F7B1F829FDC0096FBF1 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EC5F7A1F829FDC0096FBF1 /* Reachability.swift */; };
 		15EC5F801F82A0430096FBF1 /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EC5F7F1F82A0430096FBF1 /* HealthKitManager.swift */; };
 		15EC5F841F82B13E0096FBF1 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15EC5F831F82B13E0096FBF1 /* HealthKit.framework */; };
@@ -97,6 +99,8 @@
 		15271C401F85E440008E4662 /* DelayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelayExtension.swift; sourceTree = "<group>"; };
 		158AAC531F8542C600AEE39E /* UserPrefs.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = UserPrefs.plist; sourceTree = "<group>"; };
 		159B7C2F1F8EFE020006CF6A /* TodaysTaskListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodaysTaskListViewController.swift; sourceTree = "<group>"; };
+		15B0A38E1F945D3C0052A3CD /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
+		15B0A3901F9464E00052A3CD /* UserProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileTableViewController.swift; sourceTree = "<group>"; };
 		15EC5F7A1F829FDC0096FBF1 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		15EC5F7F1F82A0430096FBF1 /* HealthKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
 		15EC5F821F82B13E0096FBF1 /* todolist.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = todolist.entitlements; sourceTree = "<group>"; };
@@ -251,6 +255,8 @@
 				15EC5F871F82B3550096FBF1 /* SignInViewController.swift */,
 				15EC5F891F82BDB10096FBF1 /* HomeViewController.swift */,
 				159B7C2F1F8EFE020006CF6A /* TodaysTaskListViewController.swift */,
+				15B0A38E1F945D3C0052A3CD /* UserProfileViewController.swift */,
+				15B0A3901F9464E00052A3CD /* UserProfileTableViewController.swift */,
 				15271C1C1F859EDD008E4662 /* SettingsViewController.swift */,
 				15271C1E1F85A4D6008E4662 /* ThemeSettingsViewController.swift */,
 			);
@@ -644,6 +650,8 @@
 				15271C3D1F85CF4F008E4662 /* DateExtension.swift in Sources */,
 				15271C3F1F85D0DC008E4662 /* HexColours.swift in Sources */,
 				15EC5F7B1F829FDC0096FBF1 /* Reachability.swift in Sources */,
+				15B0A3911F9464E00052A3CD /* UserProfileTableViewController.swift in Sources */,
+				15B0A38F1F945D3C0052A3CD /* UserProfileViewController.swift in Sources */,
 				15271C1F1F85A4D6008E4662 /* ThemeSettingsViewController.swift in Sources */,
 				15EC5F8A1F82BDB10096FBF1 /* HomeViewController.swift in Sources */,
 				15271C1D1F859EDD008E4662 /* SettingsViewController.swift in Sources */,
