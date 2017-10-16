@@ -65,6 +65,6 @@ class SettingsViewController: UINavigationController, UINavigationControllerDele
   }
   
   func doneButtonPressed() {
-    performSegue(withIdentifier: "returnToHome", sender: self)
+    performSegue(withIdentifier: "unwindSegueToHomeVC", sender: self)
   }
 }

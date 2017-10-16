@@ -181,5 +181,6 @@ class HomeViewController: UINavigationController, UINavigationControllerDelegate
     userEmail = plistManager.fetchValue(for: "userEmail", fromPlistWithName: userPrefs) as! String!
     userPhotoUrl = URL(string: plistManager.fetchValue(for: "userPhoto", fromPlistWithName: userPrefs) as! String!)
   }
-  
+
+  @IBAction func unwindToHomeVC(segue:UIStoryboardSegue) {}
 }
