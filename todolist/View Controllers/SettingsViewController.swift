@@ -42,13 +42,14 @@ class SettingsViewController: UINavigationController, UINavigationControllerDele
     guard let headerBarColour = plistManager.fetchValue(for: "headerBarColour", fromPlistWithName: themeName) as! String! else { return }
     guard let headerTextColour = plistManager.fetchValue(for: "headerTextColour",fromPlistWithName: themeName) as! String! else { return }
     // check for "light" status bar
-    guard let statusBarCheck = plistManager.fetchValue(for: "userLightStatusBar", fromPlistWithName: themeName) as! Bool! else { return }
+    guard let statusBarCheck = plistManager.fetchValue(for: "useLightStatusBar", fromPlistWithName: themeName) as! Bool! else { return }
     if (statusBarCheck) {
       UIApplication.shared.statusBarStyle = .lightContent
     }
     
     // set view controller background colour
     view.backgroundColor = UIColor.white
+    view.isOpaque = true
     
   }
   
