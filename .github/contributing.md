@@ -5,8 +5,34 @@
   - Make sure to include the earliest version that you know has the issue
   (Because there haven't been and major/minor/patch releases, include the commit
   id for now)
-  - Be sure to follow the guidelines set out in the [issue_template.md]() file
+  - Follow the checklist below!
 - Create a fork of the repository on Github
+
+### Submitting an issue
+Things to check before submitting the issue:
+- [ ] Cocoapods is installed and up-to-date on your machine
+- [ ] All of the Pods needed for the project are installed
+- [ ] Xcode is up-to-date
+
+Things that should be included in your issue:
+- [ ] The thing is broken
+- [ ] The affected file(s)
+- [ ] The crash log if one is generated
+  - It should be included like this
+  ```
+  Crash log
+  goes here
+  ```
+  - If you insist on including the *entire* log, please dump it into a log file
+  and attach it to the issue instead
+- [ ] Expected behavior
+- [ ] Actual behavior
+- [ ] Steps to reproduce
+
+Things that should be included but are totally optional:
+- [ ] Screenshots
+- [ ] Code snippet
+- [ ] Add a label to the issue!
 
 ## Making changes
 - Create a topic branch from where you want to base your work
@@ -35,7 +61,7 @@ Explain the changes:
 - Push your changes to a topic branch in *your* fork of the repository
 - Submit a pull request to the repository.
   - When submitting a pull request be sure to follow the guidelines set out in
-  the [pull_request.md]() file
+  the [pull_request.md](https://github.com/samantharachelb/todolist/blob/master/.github/pull_request.md) file
 
 ## Additional resources
 - [Style Guide]()
