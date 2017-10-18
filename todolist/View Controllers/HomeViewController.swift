@@ -85,6 +85,14 @@ class HomeViewController: UINavigationController, UINavigationControllerDelegate
     }
   }
   
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if let homeViewTableViewController = segue.destination as? UITableViewController {
+      if let todayViewButton = homeViewTableViewController.childViewControllers?.first as? TodayTaskViewController {
+        
+      }
+    }
+  }
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -105,10 +113,14 @@ class HomeViewController: UINavigationController, UINavigationControllerDelegate
     }
     
     view.backgroundColor = UIColor.white
+    
+    let homeViewTableViewController = storyboard?.instantiateViewController(withIdentifier: "HomeViewTableViewController") as! HomeViewTableViewController
+    
   }
   
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
+    
     // database reference
     databaseRef = Database.database().reference()
     
@@ -159,9 +171,16 @@ class HomeViewController: UINavigationController, UINavigationControllerDelegate
       let settingsButtonItem = UIBarButtonItem(customView: settingsButton)
       self.navItem?.rightBarButtonItem = settingsButtonItem
       
-      
     }
 
+    //let todayView = UIView(frame: CGRect(x: 0, y:0, width: 414, height: 45))
+//    todayView?.backgroundColor = UIColor.white
+//    let todayViewBorderLayer = CALayer()
+//    todayViewBorderLayer.backgroundColor = UIColor.lightGray.cgColor
+//    todayViewBorderLayer.frame = CGRect(x: view.frame.width - 1, y: 0, width: 1, height: view.frame.height)
+//    todayView?.layer.addSublayer(todayViewBorderLayer)
+    
+    //view.addSubview(todayView)
   }
 
   // left navbar item action controller

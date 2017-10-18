@@ -5,7 +5,7 @@
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -47,10 +47,10 @@
             </objects>
             <point key="canvasLocation" x="667" y="121"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Home View Table View Controller-->
         <scene sceneID="FLY-2p-X0g">
             <objects>
-                <tableViewController id="7zw-4B-PYU" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="HomeViewTableViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="7zw-4B-PYU" customClass="HomeViewTableViewController" customModule="todolist" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="45" sectionHeaderHeight="1" sectionFooterHeight="28" id="cEH-GO-fzW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="135"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -139,7 +139,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1h4-rZ-UJp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2209" y="666"/>
+            <point key="canvasLocation" x="2235" y="616"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="Sff-L2-PMh">
@@ -165,20 +165,20 @@
         <scene sceneID="9bg-ww-kCH">
             <objects>
                 <viewController id="tBv-iz-gOZ" customClass="HomeViewController" customModule="todolist" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="zQc-ap-QoF">
+                    <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="NcX-81-3pA">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Mp-Yq-HRE">
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="czM-RV-fAp">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="135"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
-                                    <segue destination="7zw-4B-PYU" kind="embed" id="2XE-Fx-hoQ"/>
+                                    <segue destination="7zw-4B-PYU" kind="embed" id="i5Y-m2-EKv"/>
                                 </connections>
                             </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="tpA-wk-A1r"/>
+                        <viewLayoutGuide key="safeArea" id="7MJ-s9-H5f"/>
                     </view>
                     <navigationItem key="navigationItem" id="sDR-kR-ugJ">
                         <barButtonItem key="backBarButtonItem" title=" " id="MZ1-kE-IVt"/>
@@ -247,9 +247,6 @@
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pJW-7b-jLL">
                                 <rect key="frame" x="0.0" y="64" width="414" height="187"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <connections>
-                                    <segue destination="6Zt-Uf-eEp" kind="embed" id="KXp-7B-w8v"/>
-                                </connections>
                             </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -261,7 +258,7 @@
                     <connections>
                         <outlet property="doneButton" destination="uQG-mj-ZGG" id="bTz-nc-x5u"/>
                         <outlet property="navItem" destination="XNM-T5-hLW" id="oEY-fE-iCB"/>
-                        <segue destination="Uz7-UK-W7g" kind="unwind" unwindAction="unwindToHomeVCWithSegue:" id="4SR-8G-gIt"/>
+                        <segue destination="Uz7-UK-W7g" kind="unwind" identifier="unwindSegueToHomeVC" unwindAction="unwindToHomeVCWithSegue:" id="xfP-8I-d9T"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pX3-uw-1ec" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -272,9 +269,9 @@
         <!--User Profile Table-->
         <scene sceneID="wbx-ga-587">
             <objects>
-                <tableViewController title="User Profile Table" id="6Zt-Uf-eEp" customClass="UserProfileTableViewController" customModule="todolist" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="User Profile Table" id="6Zt-Uf-eEp" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="JsM-O5-6s0">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="187"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <sections>

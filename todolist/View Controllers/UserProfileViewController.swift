@@ -40,6 +40,8 @@ class UserProfileViewController: UINavigationController, UINavigationControllerD
   @IBOutlet weak var doneButton: UIBarButtonItem!
   @IBAction func goToProfile(segue:UIStoryboardSegue) {}
   
+  //fileprivate var userProfileTableViewController: UserProfileTableViewController?
+  
   
   
   override func viewDidLoad() {
@@ -58,6 +60,12 @@ class UserProfileViewController: UINavigationController, UINavigationControllerD
       
     }
     
+    /*guard let userProfileTableController = childViewControllers.last as? UserProfileTableViewController else {
+      fatalError("Check storyboard for missing UserProfileTableViewController")
+    }*/
+    //userProfileTableViewController = userProfileTableController
+    
+    
     // set view controller background
     view.backgroundColor = UIColor.white
     view.isOpaque = true
@@ -66,7 +74,13 @@ class UserProfileViewController: UINavigationController, UINavigationControllerD
   
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
-
+    let doneButton: UIButton = UIButton(type: UIButtonType.custom)
+    doneButton.setTitle("Done", for: UIControlState.normal)
+    doneButton.titleLabel?.textColor = UIColor().hexToColour(hexString: self.headerTextColour)
+    doneButton.addTarget(self, action: #selector(UserProfileViewController.doneButtonPressed), for: .touchUpInside)
+    let doneButtonItem = UIBarButtonItem(customView: doneButton)
+    self.navItem?.rightBarButtonItem = doneButtonItem
+    
   }
   
   // retrieve stored user data
@@ -86,6 +100,7 @@ class UserProfileViewController: UINavigationController, UINavigationControllerD
   // done button was presed
   func doneButtonPressed() {
     print("done button was pressed")
+    performSegue(withIdentifier: "unwindSegueToHomeVC", sender: self)
     
   }
 }
