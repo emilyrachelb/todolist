@@ -6,6 +6,8 @@ A free alternative to todoist
 - Colour coded tasks
 - Setting task priorities
 - Offline functionality
+- Recurring dates
+- Subtasks!
 
 ### Contributing
 Before contributing to the repository, please read both the [Code of Conduct](https://github.com/samantharachelb/todolist/blob/master/.github/code_of_conduct.md)
