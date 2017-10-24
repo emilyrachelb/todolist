@@ -1,5 +1,4 @@
-# todolist 
-
+# todolist
 A free alternative to todoist
 
 ## Planned features
@@ -7,3 +6,8 @@ A free alternative to todoist
 - Colour coded tasks
 - Setting task priorities
 - Offline functionality
+
+### Contributing
+Before contributing to the repository, please read both the [Code of Conduct](https://github.com/samantharachelb/todolist/blob/master/.github/code_of_conduct.md)
+and the [Contributing Guidelines](https://github.com/samantharachelb/todolist/blob/master/.github/contributing.md)
+

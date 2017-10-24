@@ -33,6 +33,7 @@
 		15271C3F1F85D0DC008E4662 /* HexColours.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15271C3E1F85D0DC008E4662 /* HexColours.swift */; };
 		15271C411F85E440008E4662 /* DelayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15271C401F85E440008E4662 /* DelayExtension.swift */; };
 		158AAC541F8542C600AEE39E /* UserPrefs.plist in Resources */ = {isa = PBXBuildFile; fileRef = 158AAC531F8542C600AEE39E /* UserPrefs.plist */; };
+		159B7C301F8EFE020006CF6A /* TodaysTaskListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159B7C2F1F8EFE020006CF6A /* TodaysTaskListViewController.swift */; };
 		15EC5F7B1F829FDC0096FBF1 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EC5F7A1F829FDC0096FBF1 /* Reachability.swift */; };
 		15EC5F801F82A0430096FBF1 /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EC5F7F1F82A0430096FBF1 /* HealthKitManager.swift */; };
 		15EC5F841F82B13E0096FBF1 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15EC5F831F82B13E0096FBF1 /* HealthKit.framework */; };
@@ -95,6 +96,7 @@
 		15271C3E1F85D0DC008E4662 /* HexColours.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexColours.swift; sourceTree = "<group>"; };
 		15271C401F85E440008E4662 /* DelayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelayExtension.swift; sourceTree = "<group>"; };
 		158AAC531F8542C600AEE39E /* UserPrefs.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = UserPrefs.plist; sourceTree = "<group>"; };
+		159B7C2F1F8EFE020006CF6A /* TodaysTaskListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodaysTaskListViewController.swift; sourceTree = "<group>"; };
 		15EC5F7A1F829FDC0096FBF1 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		15EC5F7F1F82A0430096FBF1 /* HealthKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
 		15EC5F821F82B13E0096FBF1 /* todolist.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = todolist.entitlements; sourceTree = "<group>"; };
@@ -248,6 +250,7 @@
 			children = (
 				15EC5F871F82B3550096FBF1 /* SignInViewController.swift */,
 				15EC5F891F82BDB10096FBF1 /* HomeViewController.swift */,
+				159B7C2F1F8EFE020006CF6A /* TodaysTaskListViewController.swift */,
 				15271C1C1F859EDD008E4662 /* SettingsViewController.swift */,
 				15271C1E1F85A4D6008E4662 /* ThemeSettingsViewController.swift */,
 			);
@@ -500,25 +503,41 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-todolist/Pods-todolist-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleAPIClientForREST/GoogleAPIClientForREST.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/NBNRequestKit/RequestKit.framework",
 				"${BUILT_PRODUCTS_DIR}/OctoKit.swift/Octokit.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyPlistManager/SwiftyPlistManager.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-ProtoRPC/ProtoRPC.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-RxLibrary/RxLibrary.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleAPIClientForREST.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RequestKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Octokit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyPlistManager.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtoRPC.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxLibrary.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -534,6 +553,8 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-todolist/Pods-todolist-resources.sh",
+				"${PODS_ROOT}/FirebaseInvites/Resources/GINInviteResources.bundle",
+				"${PODS_ROOT}/FirebaseInvites/Resources/GPPACLPickerResources.bundle",
 				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
@@ -626,6 +647,7 @@
 				15271C1F1F85A4D6008E4662 /* ThemeSettingsViewController.swift in Sources */,
 				15EC5F8A1F82BDB10096FBF1 /* HomeViewController.swift in Sources */,
 				15271C1D1F859EDD008E4662 /* SettingsViewController.swift in Sources */,
+				159B7C301F8EFE020006CF6A /* TodaysTaskListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
