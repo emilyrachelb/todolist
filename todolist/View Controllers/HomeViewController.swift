@@ -23,6 +23,10 @@ class HomeViewController: UINavigationController, UINavigationControllerDelegate
   var themesPlist = "ThemesList"
   var couldConnect: Bool!
   
+  // true: display debugging information
+  // false: don't display debugging information
+  var debugMode: Bool = true
+  
   // user info and preferences
   var userID = String()
   var userName = String()
@@ -105,10 +109,14 @@ class HomeViewController: UINavigationController, UINavigationControllerDelegate
     }
     
     view.backgroundColor = UIColor.white
+    
+    let homeViewTableViewController = storyboard?.instantiateViewController(withIdentifier: "HomeViewTableViewController") as! HomeViewTableViewController
+    
   }
   
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
+    
     // database reference
     databaseRef = Database.database().reference()
     
@@ -159,14 +167,12 @@ class HomeViewController: UINavigationController, UINavigationControllerDelegate
       let settingsButtonItem = UIBarButtonItem(customView: settingsButton)
       self.navItem?.rightBarButtonItem = settingsButtonItem
       
-      
     }
-
   }
 
   // left navbar item action controller
   func userInfoButtonsPressed() {
-    print("User info buttons button was pressed!")
+    performSegue(withIdentifier: "goToProfile", sender: self)
   }
   
   func settingsButtonPressed() {
@@ -180,6 +186,14 @@ class HomeViewController: UINavigationController, UINavigationControllerDelegate
     userName = plistManager.fetchValue(for: "userName", fromPlistWithName: userPrefs) as! String!
     userEmail = plistManager.fetchValue(for: "userEmail", fromPlistWithName: userPrefs) as! String!
     userPhotoUrl = URL(string: plistManager.fetchValue(for: "userPhoto", fromPlistWithName: userPrefs) as! String!)
+    
+    // display debugging information
+    if (debugMode == true) {
+      debugPrint("stored user id: " + userID)
+      debugPrint("stored user name: " + userName)
+      debugPrint("stored user email: " + userEmail)
+      debugPrint("stored user photo url: \(String(describing: userPhotoUrl!))")
+    }
   }
 
   @IBAction func unwindToHomeVC(segue:UIStoryboardSegue) {}
