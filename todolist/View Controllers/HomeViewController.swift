@@ -23,6 +23,10 @@ class HomeViewController: UINavigationController, UINavigationControllerDelegate
   var themesPlist = "ThemesList"
   var couldConnect: Bool!
   
+  // true: display debugging information
+  // false: don't display debugging information
+  var debugMode: Bool = true
+  
   // user info and preferences
   var userID = String()
   var userName = String()
@@ -82,14 +86,6 @@ class HomeViewController: UINavigationController, UINavigationControllerDelegate
     case .wwan:
       print("Internet reachable")
       return couldConnect = true
-    }
-  }
-  
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    if let homeViewTableViewController = segue.destination as? UITableViewController {
-      if let todayViewButton = homeViewTableViewController.childViewControllers?.first as? TodayTaskViewController {
-        
-      }
     }
   }
   
@@ -172,15 +168,6 @@ class HomeViewController: UINavigationController, UINavigationControllerDelegate
       self.navItem?.rightBarButtonItem = settingsButtonItem
       
     }
-
-    //let todayView = UIView(frame: CGRect(x: 0, y:0, width: 414, height: 45))
-//    todayView?.backgroundColor = UIColor.white
-//    let todayViewBorderLayer = CALayer()
-//    todayViewBorderLayer.backgroundColor = UIColor.lightGray.cgColor
-//    todayViewBorderLayer.frame = CGRect(x: view.frame.width - 1, y: 0, width: 1, height: view.frame.height)
-//    todayView?.layer.addSublayer(todayViewBorderLayer)
-    
-    //view.addSubview(todayView)
   }
 
   // left navbar item action controller
@@ -199,6 +186,14 @@ class HomeViewController: UINavigationController, UINavigationControllerDelegate
     userName = plistManager.fetchValue(for: "userName", fromPlistWithName: userPrefs) as! String!
     userEmail = plistManager.fetchValue(for: "userEmail", fromPlistWithName: userPrefs) as! String!
     userPhotoUrl = URL(string: plistManager.fetchValue(for: "userPhoto", fromPlistWithName: userPrefs) as! String!)
+    
+    // display debugging information
+    if (debugMode == true) {
+      debugPrint("stored user id: " + userID)
+      debugPrint("stored user name: " + userName)
+      debugPrint("stored user email: " + userEmail)
+      debugPrint("stored user photo url: \(String(describing: userPhotoUrl!))")
+    }
   }
 
   @IBAction func unwindToHomeVC(segue:UIStoryboardSegue) {}

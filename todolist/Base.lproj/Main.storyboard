@@ -52,7 +52,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="HomeViewTableViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="7zw-4B-PYU" customClass="HomeViewTableViewController" customModule="todolist" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="45" sectionHeaderHeight="1" sectionFooterHeight="28" id="cEH-GO-fzW">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="135"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <sections>
@@ -139,7 +139,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1h4-rZ-UJp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2235" y="616"/>
+            <point key="canvasLocation" x="1429" y="820"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="Sff-L2-PMh">
@@ -172,9 +172,6 @@
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="czM-RV-fAp">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="135"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <connections>
-                                    <segue destination="7zw-4B-PYU" kind="embed" id="i5Y-m2-EKv"/>
-                                </connections>
                             </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
