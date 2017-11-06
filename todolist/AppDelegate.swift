@@ -11,11 +11,16 @@ import CoreData
 import Firebase
 import GoogleSignIn
 import SwiftyPlistManager
+import HealthKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
-
+  
   var window: UIWindow?
+  
+  // true: display debug info
+  // false: don't display debug info
+  var debugMode: Bool = true
   
   // app specific variables
   var connectionAvailable: Bool!
@@ -39,13 +44,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
   var theme8 = "amethystTheme"
   var theme9 = "graphiteTheme"
   
-  // google signin user variables
-  var googleUsersId = String()
-  var googleUsersName = String()
-  var googleUsersEmail = String()
-  var googleUsersGender = String()
-  var googleUsersPhoto: URL?
-  var googleUsersPhotoAsString = String()
+  // user info variables
+  var googleUserId = String()
+  var googleUserName = String()
+  var googleUserEmail = String()
+  var googleUserPhoto = String()
+  var userGender = String()
+  var userAge = String()
+  var userBirthday = String()
   
   // create database reference
   var databaseRef: DatabaseReference!
@@ -95,6 +101,80 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     }
   }
   
+  func getIdentifyingHealthKitData() throws -> (age: Int, birthDate: String, gender: HKBiologicalSex) {
+    // database reference
+    self.databaseRef = Database.database().reference().child("user_profiles").child(self.googleUserId)
+    
+    let healthKitStore = HKHealthStore()
+    do {
+      let dateFormatter = DateFormatter()
+      dateFormatter.locale = Locale(identifier: "en_US")
+      dateFormatter.setLocalizedDateFormatFromTemplate("MMM-dd-yyyy")
+      
+      let birthdayComponents = try healthKitStore.dateOfBirthComponents()
+      let gender = try healthKitStore.biologicalSex()
+      
+      let today = Date()
+      let calendar = Calendar.current
+      let currentDateComponents = calendar.dateComponents([.year], from: today)
+      
+      let thisYear = currentDateComponents.year!
+      let age = thisYear - birthdayComponents.year!
+      let dateToDisplay = calendar.date(from: birthdayComponents)!
+      let birthDate = dateFormatter.string(from: dateToDisplay)
+      
+      let unwrappedGender = gender.biologicalSex
+      
+      return (age, birthDate, unwrappedGender)
+    }
+  }
+  
+  func saveUserInfo() {
+    self.databaseRef = Database.database().reference().child("user_profiles").child(self.googleUserId)
+    
+    self.databaseRef.observeSingleEvent(of: .value, with: { (snapshot) in
+      let snapshot = snapshot.value as? NSDictionary
+      
+      // if values don't exist in the database, save them to the database
+      // otherwise update the values
+      if (snapshot == nil) {
+        self.databaseRef.child("user_id").setValue(self.googleUserId)
+        self.databaseRef.child("user_name").setValue(self.googleUserId)
+        self.databaseRef.child("user_email").setValue(self.googleUserEmail)
+        self.databaseRef.child("user_photo_url").setValue(self.googleUserPhoto)
+        self.databaseRef.child("user_gender").setValue(self.userGender)
+        self.databaseRef.child("user_age").setValue(self.userAge)
+        self.databaseRef.child("user_birthday").setValue(self.userBirthday)
+      }
+    })
+    
+    // save to plist for offline functionality
+    plistManager.save(self.googleUserId as String!, forKey: "user_id", toPlistWithName: userPrefs) { (err) in
+      if (err == nil) { return }
+    }
+    plistManager.save(self.googleUserName as String!, forKey: "user_name", toPlistWithName: userPrefs) { (err) in
+      if (err == nil) { return }
+    }
+    plistManager.save(self.googleUserEmail as String!, forKey: "user_email", toPlistWithName: userPrefs) { (err) in
+      if (err == nil) { return }
+    }
+    plistManager.save(self.googleUserPhoto as String!, forKey: "user_photo_url", toPlistWithName: userPrefs) { (err) in
+      if (err == nil) { return }
+    }
+    plistManager.save(self.userGender, forKey: "user_gender", toPlistWithName: userPrefs) { (err) in
+      if (err == nil) { return }
+    }
+    plistManager.save(self.userAge, forKey: "user_age", toPlistWithName: userPrefs) { (err) in
+      if (err == nil) { return }
+    }
+    plistManager.save(self.userBirthday, forKey: "user_birthday", toPlistWithName: userPrefs) { (err) in
+      if (err == nil) { return }
+     }
+    
+    if (debugMode) {
+      debugPrint("User info was saved")
+    }
+  }
   
   func sign(_ signIn: GIDSignIn, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
     if error != nil {
@@ -105,51 +185,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
     
     // retrieve details from the google user's profile
-    googleUsersId = user.userID
-    googleUsersName = user.profile.name
-    googleUsersEmail = user.profile.email
-    googleUsersPhoto = user.profile.imageURL(withDimension: 100 * UInt(UIScreen.main.scale))!
-    googleUsersPhotoAsString = "\(String(describing: googleUsersPhoto!))"
+    googleUserId = user.userID
+    googleUserName = user.profile.name
+    googleUserEmail = user.profile.email
+    googleUserPhoto = "\(String(describing: user.profile.imageURL(withDimension: 100 * UInt(UIScreen.main.scale))!))"
+    let userIdentifyingInfo = try? getIdentifyingHealthKitData()
+    let userGender = userIdentifyingInfo?.gender.stringRepresentation
+    let userAge = userIdentifyingInfo?.age
+    let userBirthday = userIdentifyingInfo?.birthDate
     
-    print("appdelegate value: " + googleUsersId)
-    print("appdelegate value: " + googleUsersEmail)
-    print("appdelegate value: " + googleUsersName)
-    print("appdelegate value: " + googleUsersPhotoAsString)
+    if (debugMode == true) {
+      debugPrint("retrieved userID: ", self.googleUserId)
+      debugPrint("retrieved user_name: ", self.googleUserName)
+      debugPrint("retrieved user_email: ", self.googleUserEmail)
+      debugPrint("retrieved user_photo_url: ", self.googleUserPhoto)
+      debugPrint("retrieved user_gender: ", userGender)
+      debugPrint("retrieved user_age: ", userAge!)
+      debugPrint("retrieved user_birthday: ", userBirthday)
+    }
     
-    self.databaseRef = Database.database().reference()
-    self.databaseRef.child("user_profiles").child(self.googleUsersId).observeSingleEvent(of: .value, with: { (snapshot) in
-      let snapshot = snapshot.value as? NSDictionary
-
-      if (snapshot == nil) {
-        self.databaseRef.child("user_profiles").child(self.googleUsersId).child("id").setValue(self.googleUsersId)
-        self.databaseRef.child("user_profiles").child(self.googleUsersId).child("name").setValue(self.googleUsersName)
-        self.databaseRef.child("user_profiles").child(self.googleUsersId).child("email").setValue(self.googleUsersEmail)
-        self.databaseRef.child("user_profiles").child(self.googleUsersId).child("image_url").setValue(self.googleUsersPhotoAsString)
-      }
-    })
+    // save information
+    saveUserInfo()
     
     Auth.auth().signIn(with: credential) { (user, error) in
       if error != nil {
         return
       }
     }
-    
-    plistManager.save(googleUsersId as String!, forKey: "userID", toPlistWithName: userPrefs) { (err) in
-      if err == nil { return }
-    }
-    
-    plistManager.save(googleUsersName, forKey: "userName", toPlistWithName: userPrefs) { (err) in
-      if err == nil { return }
-    }
-    
-    plistManager.save(googleUsersEmail, forKey: "userEmail", toPlistWithName: userPrefs) { (err) in
-      if err == nil { return }
-    }
-    
-    plistManager.save(googleUsersPhotoAsString, forKey: "userPhoto", toPlistWithName: userPrefs) { (err) in
-      if err == nil { return }
-    }
-    
     return
   }
   

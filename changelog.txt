@@ -1,0 +1,4 @@
+Refactoring
+
+- Moved user info save operations into one function
+- Rewrote a part of the AppDelegate to run more efficiently

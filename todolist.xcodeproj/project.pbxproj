@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		15163F0E1FAA6DE000691403 /* GenderStringRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15163F0D1FAA6DE000691403 /* GenderStringRepresentation.swift */; };
 		15258A171F828B6800B201EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15258A161F828B6800B201EA /* AppDelegate.swift */; };
 		15258A1C1F828B6800B201EA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15258A1A1F828B6800B201EA /* Main.storyboard */; };
 		15258A1F1F828B6800B201EA /* todolist.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 15258A1D1F828B6800B201EA /* todolist.xcdatamodeld */; };
@@ -67,6 +68,7 @@
 
 /* Begin PBXFileReference section */
 		0A3C07B6C79D85690A9F7687 /* Pods_todolist.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_todolist.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		15163F0D1FAA6DE000691403 /* GenderStringRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderStringRepresentation.swift; sourceTree = "<group>"; };
 		15258A131F828B6800B201EA /* todolist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = todolist.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15258A161F828B6800B201EA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		15258A1B1F828B6800B201EA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -269,6 +271,7 @@
 			isa = PBXGroup;
 			children = (
 				15EC5F7F1F82A0430096FBF1 /* HealthKitManager.swift */,
+				15163F0D1FAA6DE000691403 /* GenderStringRepresentation.swift */,
 			);
 			path = HealthKit;
 			sourceTree = "<group>";
@@ -649,6 +652,7 @@
 				15258A171F828B6800B201EA /* AppDelegate.swift in Sources */,
 				15EC5F801F82A0430096FBF1 /* HealthKitManager.swift in Sources */,
 				157024EE1F96789B004E234C /* HomeViewTableViewController.swift in Sources */,
+				15163F0E1FAA6DE000691403 /* GenderStringRepresentation.swift in Sources */,
 				158B161E1F9587E8004EF001 /* AddBordersToUIView.swift in Sources */,
 				15EC5F881F82B3550096FBF1 /* SignInViewController.swift in Sources */,
 				15271C411F85E440008E4662 /* DelayExtension.swift in Sources */,
