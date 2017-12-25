@@ -140,8 +140,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
       if (snapshot == nil) {
         self.databaseRef.child("user_id").setValue(self.googleUserId)
         self.databaseRef.child("user_name").setValue(self.googleUserId)
-        self.databaseRef.child("user_email").setValue(self.googleUserEmail)
-        self.databaseRef.child("user_photo_url").setValue(self.googleUserPhoto)
         self.databaseRef.child("user_gender").setValue(self.userGender)
         self.databaseRef.child("user_age").setValue(self.userAge)
         self.databaseRef.child("user_birthday").setValue(self.userBirthday)

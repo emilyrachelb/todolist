@@ -1,10 +1,4 @@
-//
-//  DateExtension.swift
-//  todolist
-//
-//  Created by Samantha Emily-Rachel Belnavis on 2017-10-04.
-//  Copyright © 2017 Samantha Emily-Rachel Belnavis. All rights reserved.
-//
+//: Playground - noun: a place where people can play
 
 import Foundation
 
@@ -34,4 +28,6 @@ extension Date {
     var nextYear: Date {
         return Calendar.current.date(byAdding: .year, value: 1, to: self)!
     }
+    
 }
+
